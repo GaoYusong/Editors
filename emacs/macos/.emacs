@@ -20,6 +20,16 @@
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
 
+;; add compile current cpp file
+(defun compile-cpp ()
+  (interactive)
+  (compile (concat "g++ \"" (buffer-file-name) "\" -O2 -o main")))
+(global-set-key [f5] 'compile-cpp)
+
+;; add run eshell
+(global-set-key [f9]
+                (lambda () (interactive) (eshell)))
+
 ;;------------------------------------------------------------------------------
 ;; set visible, tab and etc...
 ;;------------------------------------------------------------------------------
@@ -39,7 +49,7 @@
 
 ;; set tabs to spaces and set tab width
 (setq-default indent-tabs-mode nil)
-(setq tab-width 4)
+(setq-default tab-width 4)
 
 ;; don't genereate backup file tail with ~
 (setq make-backup-files nil)
@@ -53,21 +63,16 @@
 (ido-mode t)
 
 (require 'cc-mode)
-;; set cc-mode tab width 2
-(setq-default c-basic-offset 2)
+;; set cc-mode tab width 4
+(setq-default c-basic-offset 4)
 
 ;; set cc-mode auto indent
 (define-key global-map (kbd "RET") 'newline-and-indent)
 
-;; add compile current cpp file
-(defun compile-cpp ()
-  (interactive)
-  (compile (concat "g++ \"" (buffer-file-name) "\" -O2 -o main")))
-(global-set-key [f5] 'compile-cpp)
 
-;; add run eshell
-(global-set-key [f9]
-                (lambda () (interactive) (eshell)))
+;; add go mode
+(add-to-list 'load-path "~/.emacs.plugin/go-mode")
+(require 'go-mode-load)
 
 ;; start elscreen
 ;; (elscreen-start)
@@ -118,5 +123,20 @@
           (kill-buffer))))))
 
 
+;;------------------------------------------------------------------------------
+;; auto generate
+;;------------------------------------------------------------------------------
 
-
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector ["#2e3436" "#a40000" "#4e9a06" "#c4a000" "#204a87" "#5c3566" "#729fcf" "#eeeeec"])
+ '(custom-enabled-themes (quote (deeper-blue))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
