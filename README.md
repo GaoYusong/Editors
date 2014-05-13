@@ -1,0 +1,4 @@
+Editors
+=======
+
+my editor configuration
