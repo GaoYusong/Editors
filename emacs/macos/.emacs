@@ -70,22 +70,7 @@
 (define-key global-map (kbd "RET") 'newline-and-indent)
 
 
-;; add go mode
-(add-to-list 'load-path "~/.emacs.plugin/go-mode")
-(require 'go-mode-load)
 
-;; start elscreen
-;; (elscreen-start)
-
-;; add elscreen configure, this code is ugly, and should be improved
-;; (global-set-key [?\M-1] (lambda () (interactive) (elscreen-goto 0)))
-;; (global-set-key [?\M-2] (lambda () (interactive) (elscreen-goto 1)))
-;; (global-set-key [?\M-3] (lambda () (interactive) (elscreen-goto 2)))
-;; (global-set-key [?\M-4] (lambda () (interactive) (elscreen-goto 3)))
-;; (global-set-key [?\M-5] (lambda () (interactive) (elscreen-goto 4)))
-;; (global-set-key [?\M-6] (lambda () (interactive) (elscreen-goto 5)))
-
-;; (elscreen-start)
 
 ;;------------------------------------------------------------------------------
 ;; add command
@@ -121,6 +106,35 @@
           (delete-file filename)
           (message "Deleted file %s" filename)
           (kill-buffer))))))
+
+
+;; @notice
+;; split line
+;; pure emacs on top of this line
+;;==============================================================================
+
+
+;;------------------------------------------------------------------------------
+;;  need plugin
+;;------------------------------------------------------------------------------
+
+;; add go mode
+(add-to-list 'load-path "~/.emacs.plugin/go-mode")
+(require 'go-mode-load)
+
+;; start elscreen
+;; (elscreen-start)
+
+;; add elscreen configure, this code is ugly, and should be improved
+;; (global-set-key [?\M-1] (lambda () (interactive) (elscreen-goto 0)))
+;; (global-set-key [?\M-2] (lambda () (interactive) (elscreen-goto 1)))
+;; (global-set-key [?\M-3] (lambda () (interactive) (elscreen-goto 2)))
+;; (global-set-key [?\M-4] (lambda () (interactive) (elscreen-goto 3)))
+;; (global-set-key [?\M-5] (lambda () (interactive) (elscreen-goto 4)))
+;; (global-set-key [?\M-6] (lambda () (interactive) (elscreen-goto 5)))
+
+;; (elscreen-start)
+
 
 
 ;;------------------------------------------------------------------------------
