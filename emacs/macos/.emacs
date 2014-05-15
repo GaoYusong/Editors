@@ -11,6 +11,8 @@
 ;; set key
 ;;------------------------------------------------------------------------------
 
+(setq mac-command-modifier 'meta)
+
 ;; map C-x C-m and C-c C-m as M-x
 (global-set-key "\C-x\C-m" 'execute-extended-command)
 (global-set-key "\C-c\C-m" 'execute-extended-command)
@@ -53,6 +55,9 @@
 
 ;; don't genereate backup file tail with ~
 (setq make-backup-files nil)
+
+;; (tool-bar-mode -1)
+(scroll-bar-mode -1)
 
 ;;------------------------------------------------------------------------------
 ;; mode
@@ -122,6 +127,27 @@
 (add-to-list 'load-path "~/.emacs.plugin/go-mode")
 (require 'go-mode-load)
 
+;; add sr-speedbar, make speed bar in one window
+(add-to-list 'load-path "~/.emacs.plugin/sr-speedbar")
+(require 'sr-speedbar)
+(setq sr-speedbar-right-side nil)
+
+;; add misc
+(add-to-list 'load-path "~/.emacs.plugin/misc")
+;; add shell path to emacs path
+(require 'exec-path-from-shell)
+(when (memq window-system '(mac ns)) (exec-path-from-shell-initialize))
+
+;; @dependence need install auto complete 
+;; add auto-complete,
+(add-to-list 'load-path "~/.emacs.d/")
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d//ac-dict")
+(ac-config-default)
+
+;; add auto-complete to go-mode
+(add-to-list 'ac-modes 'go-mode)
+
 ;; start elscreen
 ;; (elscreen-start)
 
@@ -134,7 +160,6 @@
 ;; (global-set-key [?\M-6] (lambda () (interactive) (elscreen-goto 5)))
 
 ;; (elscreen-start)
-
 
 
 ;;------------------------------------------------------------------------------
