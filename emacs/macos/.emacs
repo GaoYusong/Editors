@@ -68,14 +68,12 @@
 (ido-mode t)
 
 (require 'cc-mode)
-;; set cc-mode tab width 4
-(setq-default c-basic-offset 4)
+;; set cc-mode tab width 2
+(setq-default c-basic-offset 2)
+(add-to-list 'auto-mode-alist '("\\.h$" . c++-mode))
 
 ;; set cc-mode auto indent
 (define-key global-map (kbd "RET") 'newline-and-indent)
-
-
-
 
 ;;------------------------------------------------------------------------------
 ;; add command
@@ -147,6 +145,14 @@
 
 ;; add auto-complete to go-mode
 (add-to-list 'ac-modes 'go-mode)
+(add-to-list 'ac-modes 'erlang-mode)
+
+;; erlang-mode, need install erlang otp
+(setq load-path (cons  "/usr/local/lib/erlang/lib/tools-2.6.14/emacs"
+                       load-path))
+(setq erlang-root-dir "/usr/local/lib/erlang")
+(setq exec-path (cons "/usr/local/lib/erlang/bin" exec-path))
+(require 'erlang-start)
 
 ;; start elscreen
 ;; (elscreen-start)
